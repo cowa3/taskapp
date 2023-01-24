@@ -1,38 +1,72 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import styled from 'styled-components';
+import {Home} from '@styled-icons/typicons/Home';
+import {PencilSquare} from '@styled-icons/heroicons-solid/PencilSquare';
 
 function App() {
-  return (
-    <div className="App">
-      <Header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </Header>
-    </div>
-  );
+    return (
+        <Header className="App">
+            <h1 className="Title">
+                Todo App
+            </h1>
+            <HeaderComponent>
+                <Link
+                    className="Home"
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <StyledHome />
+                    <MarginIcon>Home</MarginIcon>
+                </Link>
+            </HeaderComponent>
+            <HeaderComponent>
+                <Link
+                    className="NewTask"
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <StyledPencilSquare />
+                    <MarginIcon>New Task</MarginIcon>
+                </Link>
+            </HeaderComponent>
+        </Header>
+    );
 }
 
 export default App;
 
-const Header = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+const LinkColor = "#807d7d";
+const HeaderMarginVertical = "32px";
+const HeaderMarginHorizontal = 0;
+const IconWidth = "32px";
+const LinkFontSize = "20px";
+const MarginIconFontSize = "16px";
+
+const Header = styled.div`
+  margin: ${HeaderMarginVertical};
+`
+const HeaderComponent = styled.p`
+  margin: ${HeaderMarginVertical} ${HeaderMarginHorizontal};
+`
+const Link = styled.a`
+  text-decoration: none;
+  color: ${LinkColor};
+  font-weight: bold;
+  font-size: ${LinkFontSize};
+  //font-family: system-ui;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: red;
-`;
+`
+const StyledHome = styled(Home)`
+  color: ${LinkColor};
+  width: ${IconWidth};
+`
+const StyledPencilSquare = styled(PencilSquare)`
+  color: ${LinkColor};
+  width: ${IconWidth};
+`
+const MarginIcon = styled.div`
+  margin-left: ${MarginIconFontSize};
+`
