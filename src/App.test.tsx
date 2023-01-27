@@ -1,4 +1,4 @@
-import React from 'react';
+import　React from 'react';
 import App from './App';
 import {expect} from 'chai';
 import {mount, configure, ReactWrapper} from 'enzyme';
@@ -30,5 +30,44 @@ test('renders Link', () => {
     expect(newTask).to.equal('New Task');
 });
 
+test('renders TitleOfTask', async () => {
 
+    await act(async () => {
+    // フェッチメソッドのモック化
+    // const stub = sinon.stub(global, 'fetch');
+    // stub.onCall(0).returns(jsonOk(MOCK_JSON));
+    // stub.returns(
+    //     // @ts-ignore
+    //     Promise.resolve({
+    //     status: 200,
+    //         json: async ()=> response
+    //     }));
 
+    // コンポーネントをマウント→モックしたフェッチメソッドが呼ばれる
+    const wrapper: ReactWrapper = mount(<App/>);
+    console.log(wrapper.debug())
+
+    // // タスクリストが描画されていることを確認
+    // const title = wrapper.find('li').at(0).text();
+    // expect(title).to.equal('1st Task');
+
+    });
+});
+
+function jsonOk (body: any) {
+    let mockResponse = new window.Response(JSON.stringify(body), {
+        status: 200,
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+
+    return Promise.resolve(mockResponse);
+}
+
+const MOCK_JSON = [{
+    'userId': 1 ,
+    'id': 1 ,
+    'title': "1st Task" ,
+    'completed': false ,}
+]
