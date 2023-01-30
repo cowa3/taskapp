@@ -3,6 +3,8 @@ import App from './App';
 import {expect} from 'chai';
 import {mount, configure, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import sinon from 'sinon';
+import {act} from "react-dom/test-utils";
 
 configure({adapter: new Adapter()});
 
@@ -31,27 +33,17 @@ test('renders Link', () => {
 });
 
 test('renders TitleOfTask', async () => {
+    const stub = sinon.stub(global, 'fetch');
+    stub.onCall(0).returns(jsonOk(MOCK_JSON));
 
+    let wrapper: ReactWrapper
     await act(async () => {
-    // フェッチメソッドのモック化
-    // const stub = sinon.stub(global, 'fetch');
-    // stub.onCall(0).returns(jsonOk(MOCK_JSON));
-    // stub.returns(
-    //     // @ts-ignore
-    //     Promise.resolve({
-    //     status: 200,
-    //         json: async ()=> response
-    //     }));
-
-    // コンポーネントをマウント→モックしたフェッチメソッドが呼ばれる
-    const wrapper: ReactWrapper = mount(<App/>);
-    console.log(wrapper.debug())
-
-    // // タスクリストが描画されていることを確認
-    // const title = wrapper.find('li').at(0).text();
-    // expect(title).to.equal('1st Task');
-
+        wrapper = mount(<App/>)
     });
+    wrapper.update()
+
+    const title = wrapper.find('label').at(0).text();
+    expect(title).to.equal('1st Task');
 });
 
 function jsonOk (body: any) {
@@ -65,9 +57,11 @@ function jsonOk (body: any) {
     return Promise.resolve(mockResponse);
 }
 
-const MOCK_JSON = [{
-    'userId': 1 ,
-    'id': 1 ,
-    'title': "1st Task" ,
-    'completed': false ,}
+const MOCK_JSON = [
+    {
+        'userId': 1 ,
+        'id': 1 ,
+        'title': "1st Task" ,
+        'completed': false ,
+    }
 ]
