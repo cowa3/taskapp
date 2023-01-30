@@ -3,7 +3,7 @@ import App from './App';
 import {expect} from 'chai';
 import {mount, configure, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import sinon from 'sinon';
+import sinon, {SinonStub} from 'sinon';
 import {act} from "react-dom/test-utils";
 
 configure({adapter: new Adapter()});
