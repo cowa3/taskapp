@@ -32,9 +32,7 @@ function Header() {
                         <MarginIcon>New Task</MarginIcon>
                     </Link>
                 </HeaderComponent>
-                <Header/>
-            </AppName>
-            <VerticalLine/>
+                </AppName>
         </div>
     )
 }
@@ -50,6 +48,7 @@ const MarginIconFontSize = "16px";
 
 const AppName = styled.div`
   margin: ${HeaderMarginVertical};
+  width: 100%;
 `
 const HeaderComponent = styled.div`
   margin: ${HeaderMarginVertical} ${HeaderMarginHorizontal};
@@ -72,7 +71,4 @@ const StyledPencilSquare = styled(PencilSquare)`
 `
 const MarginIcon = styled.div`
   margin-left: ${MarginIconFontSize};
-`
-const VerticalLine = styled.div`
-  border-left: 0.3px solid gray;
 `

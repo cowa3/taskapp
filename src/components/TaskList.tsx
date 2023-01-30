@@ -93,4 +93,5 @@ const Title = styled.label`
 `
 const Body = styled.div`
   display: flex;
+  width: 100%;
 `
