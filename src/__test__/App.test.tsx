@@ -1,7 +1,7 @@
 import React from 'react';
-import App from './App';
+import App from '../App';
 import {expect} from 'chai';
-import {mount, configure, ReactWrapper} from 'enzyme';
+import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon, {SinonStub} from 'sinon';
 import {act} from "react-dom/test-utils";
