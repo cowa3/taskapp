@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import styled from "styled-components";
+import Task from "./Task";
 
-type Task = {
+export type TaskType = {
     userId: number;
     id: number;
     title: string;
@@ -10,7 +11,7 @@ type Task = {
 
 function TaskList() {
 
-    const [taskList, setTaskList] = useState<Task[]>([]);
+    const [taskList, setTaskList] = useState<TaskType[]>([]);
     const [checkedTags, setCheckedTags] = useState<number[]>([])
 
     useEffect(() => {
