@@ -4,7 +4,7 @@ import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon, {SinonStub} from 'sinon';
 import NewTask from "../../components/NewTask";
-import {act, Simulate} from "react-dom/test-utils";
+import {act} from "react-dom/test-utils";
 
 
 configure({adapter: new Adapter()});

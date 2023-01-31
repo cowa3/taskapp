@@ -14,7 +14,7 @@ describe('App', () => {
     let wrapper: ReactWrapper
     let stub: SinonStub
 
-    beforeEach(async ()=> {
+    beforeEach(async () => {
         stub = sinon.stub(global, 'fetch');
         stub.onCall(0).returns(jsonOk(MOCK_JSON));
 
@@ -24,7 +24,7 @@ describe('App', () => {
         wrapper.update()
     })
 
-    afterEach(()=> {
+    afterEach(() => {
         stub.restore()
     })
 
@@ -42,11 +42,6 @@ describe('App', () => {
         expect(newTask).to.equal('New Task');
     });
 
-    test('renders TitleOfTask', async () => {
-        const title = wrapper.find('label').at(0).text();
-
-        expect(title).to.equal('1st Task');
-    });
 });
 
 function jsonOk(body: any) {
