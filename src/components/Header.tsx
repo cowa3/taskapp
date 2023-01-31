@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import {Home} from "@styled-icons/typicons/Home";
 import {PencilSquare} from "@styled-icons/heroicons-solid/PencilSquare";
+import {Link} from "react-router-dom";
 
 function Header() {
     return (
@@ -11,26 +12,22 @@ function Header() {
                     Todo App
                 </h1>
                 <HeaderComponent>
-                    <Link
+                    <StyledLink
                         className="Home"
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        to="/"
                     >
                         <StyledHome/>
                         <MarginIcon>Home</MarginIcon>
-                    </Link>
+                    </StyledLink>
                 </HeaderComponent>
                 <HeaderComponent>
-                    <Link
+                    <StyledLink
                         className="NewTask"
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        to="/newtask"
                     >
                         <StyledPencilSquare/>
                         <MarginIcon>New Task</MarginIcon>
-                    </Link>
+                    </StyledLink>
                 </HeaderComponent>
                 </AppName>
         </div>
@@ -53,7 +50,7 @@ const AppName = styled.div`
 const HeaderComponent = styled.div`
   margin: ${HeaderMarginVertical} ${HeaderMarginHorizontal};
 `
-const Link = styled.a`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${LinkColor};
   font-weight: bold;
